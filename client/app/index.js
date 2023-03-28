@@ -9,37 +9,33 @@ async function handleSubmitMessage(message) {
     addUserMessageToDialogueBox(message);
 
     // send fetch request to our backend endpoint
-    const response = await fetch('/api/openai', {
+    const response = await $.ajax({
+        url: '/api/openai',
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message }),
+        contentType: 'application/json',
+        data: JSON.stringify({ message }),
     });
 
-    // parse our server's response as json
-    const payload = await response.json();
-
     // return the response
-    return payload
+    return response;
 }
 
 // add the user's question to the dialogue box
 function addUserMessageToDialogueBox(message) {
     // create a new li element
-    const userMessage = document.createElement('li');
+    const userMessage = $('<li>');
 
     // add user-specific styling to element
-    userMessage.classList.add('bg-indigo-500', 'text-white', 'rounded', 'p-2', 'w-fit', 'self-end', 'break-words');
+    userMessage.addClass('bg-indigo-500 text-white rounded p-2 w-fit self-end break-words');
 
     // add the user's message to the element
-    userMessage.innerText = message;
+    userMessage.text(message);
 
     // add the li element to the DOM
-    document.getElementById('dialogue').appendChild(userMessage);
+    $('#dialogue').append(userMessage);
 
     // clear the input for the next question
-    document.getElementById('prompt-input').value = '';
+    $('#prompt-input').val('');
 
     // display loading indicator in dialogue box
     addLoadingIndicatorToDialogueBox();
@@ -48,86 +44,91 @@ function addUserMessageToDialogueBox(message) {
 // add the loading indicator to the dialogue box
 function addLoadingIndicatorToDialogueBox() {
     // create a new li element
-    const loadingIndicator = document.createElement('li');
+    const loadingIndicator = $('<li>');
 
     // set the id of the loading indicator
-    loadingIndicator.id = 'loading-indicator';
+    loadingIndicator.attr('id', 'loading-indicator');
 
     // add loading indicator styling
-    loadingIndicator.classList.add('bg-gray-500', 'text-white', 'rounded', 'p-2', 'w-fit', 'self-start', 'w-12');
+    loadingIndicator.addClass('bg-gray-500 text-white rounded p-2 w-fit self-start w-12');
 
     // create a new span element
-    const loadingDots = document.createElement('span');
+    const loadingDots = $('<span>');
 
     // add the three dots inside the span element
-    loadingDots.innerHTML = '&#8226;&#8226;&#8226;';
+    loadingDots.html('&#8226;&#8226;&#8226;');
 
     // add loading dots as a child to li element
-    loadingIndicator.appendChild(loadingDots);
+    loadingIndicator.append(loadingDots);
 
     // add the li element to the DOM
-    document.getElementById('dialogue').appendChild(loadingIndicator);
+    $('#dialogue').append(loadingIndicator);
 }
 
 // remove the loading indicator from the dialogue box
 function removeLoadingIndicatorFromDialogueBox() {
     // get the loading indicator element
-    const loadingIndicator = document.getElementById('loading-indicator');
+    const loadingIndicator = $('#loading-indicator');
 
     // remove the loading indicator from the DOM
     loadingIndicator.remove();
 }
-
 // add the chatbot's response to the dialogue box
 function addBotMessageToDialogueBox(response) {
     // remove the loading indicator now that the response has been received
     removeLoadingIndicatorFromDialogueBox();
 
     // create a new li element
-    const botMessage = document.createElement('li');
+    const botMessage = $('<li>');
 
-    // style the bot response element based on the status
-    if (response.status === "error") {
+    // check if the response object exists and has a status property
+    if (response && response.status === "error") {
         // add error styling
-        botMessage.classList.add('bg-red-500', 'text-white', 'rounded', 'p-2', 'w-fit', 'self-start');
+        botMessage.addClass('bg-red-500 text-white rounded p-2 w-fit self-start');
 
         // add error text
-        botMessage.innerText = "Oh no! Something went wrong. Please try again later.";
-    } else {
+        botMessage.text("Oh no! Something went wrong. Please try again later.");
+    } else if (response && response.data) {
         // add user-specific styling to element
-        botMessage.classList.add('bg-gray-500', 'text-white', 'rounded', 'p-2', 'w-fit', 'self-start');
+        botMessage.addClass('bg-gray-500 text-white rounded p-2 w-fit self-start');
 
         // add the user's response to the element
-        botMessage.innerText = response.data.trim();
+        botMessage.text(response.data.trim());
+    } else {
+        // handle unexpected response format
+        botMessage.addClass('bg-red-500 text-white rounded p-2 w-fit self-start');
+        botMessage.text("Error!: Unexpected response format. Please try again.");
     }
 
     // add the li element to the DOM
-    document.getElementById('dialogue').appendChild(botMessage);
+    $('#dialogue').append(botMessage);
 
     // clear the input for the next response
-    document.getElementById('prompt-input').value = '';
+    $('#prompt-input').val('');
 }
+
 
 // when the window loads, add an event listener to the form
 // that calls the handleSubmitMessage function when the form is submitted
-window.onload = () => document.getElementById('prompt-form').addEventListener('submit', (e) => {
-    // prevent the form from refreshing the page
-    e.preventDefault();
+$(window).on('load', function () {
+    $('#prompt-form').on('submit', async function (e) {
+        // prevent the form from refreshing the page
+        e.preventDefault();
 
-    // get the value of the input
-    const message = document.getElementById('prompt-input').value;
+        // get the value of the input
+        const message = $('#prompt-input').val();
 
-    // call the function that handles the fetch request to our backend
-    handleSubmitMessage(message).then((data) => {
+        // call the function that handles the fetch request to our backend
+        const data = await handleSubmitMessage(message);
+
         // add the chatbot's response to the DOM when the fetch request is complete
         addBotMessageToDialogueBox(data);
     });
 });
 
+const $maximizeButton = $('.maximize-button');
+const $chatContainer = $('.chat-container');
 
-const maximizeButton = document.querySelector('.maximize-button');
-const chatContainer = document.querySelector('.chat-container');
-
-maximizeButton.addEventListener('click', () => {
-  chatContainer.classList.toggle('maximized');
+$maximizeButton.on('click', function () {
+    $chatContainer.toggleClass('maximized');
 });

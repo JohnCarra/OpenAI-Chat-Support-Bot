@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OpenAI Chat API</title>
+    <link rel="icon" type="image/png" href="images/favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="root">
+      <main>
+        <h1>OpenAI Chat API</h1>
+        <h2>Customer Support</h2>
+      </main>
+      <footer>
+        <div>
+          <p>&copy; 2023 AI Team. All rights reserved.</p>
+        </div>
+      </footer>
+      <div class="chat-container">
+        <div class="chat-header">
+          <h3>Customer Support</h3>
+          <button class="close-button">&times;</button>
+        </div>
+        <section>
+          <ul id="dialogue">
+            <li>Hi there 👋 I can help you with your support questions!</li>
+          </ul>
+        </section>
+        <section class="form-section">
+          <form id="prompt-form">
+            <input
+              id="prompt-input"
+              type="text"
+              name="prompt"
+              placeholder="Type your message here..."
+            />
+            <button class="send-button" type="submit">&#9658;</button>
+          </form>
+        </section>
+      </div>
+    </div>
+    <script src="app/index.js" type="module"></script>
+  </body>
+</html>

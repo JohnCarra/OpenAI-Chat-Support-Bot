@@ -20,3 +20,4 @@ node_modules/
 
 # system
 .DS_Store
+package-lock.json

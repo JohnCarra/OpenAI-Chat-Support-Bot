@@ -123,3 +123,11 @@ window.onload = () => document.getElementById('prompt-form').addEventListener('s
         addBotMessageToDialogueBox(data);
     });
 });
+
+
+const maximizeButton = document.querySelector('.maximize-button');
+const chatContainer = document.querySelector('.chat-container');
+
+maximizeButton.addEventListener('click', () => {
+  chatContainer.classList.toggle('maximized');
+});

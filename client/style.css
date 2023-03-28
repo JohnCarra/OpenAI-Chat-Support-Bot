@@ -101,6 +101,25 @@ h2 {
   cursor: pointer;
 }
 
+.maximize-button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.chat-container.maximized {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+
 /* Section styles */
 section {
   flex-grow: 1;

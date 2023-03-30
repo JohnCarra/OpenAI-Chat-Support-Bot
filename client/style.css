@@ -1,3 +1,4 @@
+
 /* Box sizing rules */
 *,
 *::before,
@@ -17,8 +18,9 @@
   --light-text-color: #6c757d;
   --border-color: #ccc;
   --white-color: #ffffff;
+  --nav-bar-bg-color: #2c3e50; /* New color for nav bar background */
+  --nav-bar-hover-bg-color: #34495e; /* New color for nav bar hover */
 }
-
 /* Remove default margin and padding */
 html,
 body {
@@ -110,11 +112,11 @@ h2 {
 }
 
 .chat-container.maximized {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 60px;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100%-60%);
   border-radius: 0;
   box-shadow: none;
 }
@@ -132,20 +134,70 @@ section {
   border-bottom: 1px solid var(--border-color);
 }
 
+
 /* Dialogue styles */
 ul {
-  flex-grow: 1;
   padding: 0;
   margin: 0;
   list-style: none;
+}
+
+.dialogue {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   overflow: scroll;
 }
 
+/* Navigation bar */
+.nav-bar {
+  display: flex;
+  justify-content: space-between; /* Update this line */
+  align-items: center; /* Add this line */
+  background-color: var(--primary-color);
+  position: fixed;
+  top: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+.nav-bar-content {
+  display: flex;
+  gap: 1rem;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-bar-content li {
+  display: inline;
+}
+
+.nav-bar li {
+  display: inline-block;
+}
+
+.nav-bar li a {
+  display: inline-block;
+  color: var(--light-color);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: transparent; /* Add this line */
+}
+
+
+.nav-bar li a:hover {
+  background-color: var(--nav-bar-hover-bg-color); /* Updated color */
+}
+
+
 li {
-  background-color: var(--white-color);
+  background-color: transparent);
   padding: 1rem;
   border-radius: 0.5rem;
   word-break: break-word;

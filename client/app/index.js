@@ -26,7 +26,7 @@ function addUserMessageToDialogueBox(message) {
     const userMessage = $('<li>');
 
     // add user-specific styling to element
-    userMessage.addClass('bg-indigo-500 text-white rounded p-2 w-fit self-end break-words');
+    userMessage.addClass('bg-indigo-500 text-black rounded p-2 w-fit self-end break-words');
 
     // add the user's message to the element
     userMessage.text(message);
@@ -50,7 +50,7 @@ function addLoadingIndicatorToDialogueBox() {
     loadingIndicator.attr('id', 'loading-indicator');
 
     // add loading indicator styling
-    loadingIndicator.addClass('bg-gray-500 text-white rounded p-2 w-fit self-start w-12');
+    loadingIndicator.addClass('bg-gray-500 text-black rounded p-2 w-fit self-start w-12');
 
     // create a new span element
     const loadingDots = $('<span>');
@@ -84,19 +84,19 @@ function addBotMessageToDialogueBox(response) {
     // check if the response object exists and has a status property
     if (response && response.status === "error") {
         // add error styling
-        botMessage.addClass('bg-red-500 text-white rounded p-2 w-fit self-start');
+        botMessage.addClass('bg-red-500 text-black rounded p-2 w-fit self-start');
 
         // add error text
         botMessage.text("Oh no! Something went wrong. Please try again later.");
     } else if (response && response.data) {
         // add user-specific styling to element
-        botMessage.addClass('bg-gray-500 text-white rounded p-2 w-fit self-start');
+        botMessage.addClass('bg-gray-500 text-black rounded p-2 w-fit self-start');
 
         // add the user's response to the element
         botMessage.text(response.data.trim());
     } else {
         // handle unexpected response format
-        botMessage.addClass('bg-red-500 text-white rounded p-2 w-fit self-start');
+        botMessage.addClass('bg-red-500 text-black rounded p-2 w-fit self-start');
         botMessage.text("Error!: Unexpected response format. Please try again.");
     }
 

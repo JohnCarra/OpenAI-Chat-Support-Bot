@@ -8,6 +8,7 @@
 /* Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
+
 /* Color palette */
 :root {
   --primary-color: #0066ff;
@@ -34,6 +35,8 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-size: 16px;
+  overflow: hidden;
+  margin: 0;
 }
 
 /* Root element styles */
@@ -42,6 +45,12 @@ body {
   flex-direction: column;
   min-height: 100vh;
   padding: 16px;
+}
+
+.main-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Header styles */
@@ -103,6 +112,16 @@ main {
   justify-content: center;
 }
 
+/* Ocean wave background */
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
 /* Chat container styles */
 .chat-container {
   position: fixed;
@@ -130,11 +149,8 @@ main {
   border-top-right-radius: 10px;
 }
 
-.close-button {
-  background-color: transparent;
-  border: none;
-  font-size: 1.25rem;
-  cursor: pointer;
+.chat-container.minimized section {
+  display: none;
 }
 
 .maximize-button {
@@ -147,10 +163,10 @@ main {
 
 .chat-container.maximized {
   position: fixed;
-  top: 60px;
+  top: 90px;
   left: 0;
   width: 100%;
-  height: calc(100% - 60px);
+  height: calc(100% - 90px);
   border-radius: 0;
   box-shadow: none;
 }
@@ -162,12 +178,14 @@ main {
   height: 7rem;
 }
 
+
 .form-section form input[type="text"] {
   flex-grow: 1;
   padding: 0.5rem;
   font-size: 1rem;
   border: none;
   border-top: 1px solid var(--border-color);
+  /* width: 100%; */
 }
 
 .form-section form button[type="submit"] {
@@ -180,6 +198,8 @@ main {
   border-radius: 5px;
   margin-left: 0.5rem;
 }
+
+
 
 /* Section styles */
 section {
@@ -209,7 +229,7 @@ ul {
 
 /* Footer styles */
 footer {
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
   color: var(--white-color);
   padding: 0.01rem; /* reduce padding to make footer smaller */
   position: fixed;
@@ -225,3 +245,31 @@ footer {
 main {
   margin-bottom: 60px; /* adjust margin to match smaller footer */
 }
+
+
+/* Main Text animation */
+.main-text {
+  display: flex;
+  font-size: 3rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.second-text {
+  display: flex;
+  /* font-size: 3rem; */
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.third-text {
+  display: flex;
+  font-size: 3rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+

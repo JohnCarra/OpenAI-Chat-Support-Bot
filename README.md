@@ -1,8 +1,6 @@
-# Project Name
+# OpenAI Help Desk Support Bot
 
-OpenAI Help Desk Support Bot
-
-# Description
+## Description
 
 This is a web application that uses the OpenAI Chat API to provide customer support through a chat interface. The application is built using Express.js on the backend and jQuery on the frontend. The backend accepts user input through a form and sends it to the OpenAI API for processing. The response from the API is then returned to the frontend and displayed in the chat interface.
 
@@ -10,22 +8,17 @@ The chat interface consists of a chat container that displays the conversation h
 
 The frontend is implemented using HTML, CSS, and JavaScript, and the backend is implemented using Node.js and Express.js. The OpenAI API is used to process the user input and generate responses. The application is designed to be responsive, and it includes a maximize button that allows the user to expand the chat container to fill the screen.
 
-# Installation
+## Installation
 
-### 1. clone the repository
+1. Clone the repository: `git clone https://github.com/JohnCarra/OpenAIText`
+2. Navigate to the project directory: `cd OpenAIText`
+3. Install dependencies: `npm install`
+4. Start the development server: `npm start`
 
-git clone https://github.com/JohnCarra/OpenAIText
+## Usage
 
-### 2. cd OpenAIText
+This project is for educational purposes and is simply showcasing the capability of the OpenAI API when implemented inside of a WebApp.
 
-### 3. npm install
-
-### 4. npm run dev
-
-# Usage
-
-This project is for educational purposes its simply showcasing the capability of the OpenAI API when implemented inside of a WebApp
-
-# License
+## License
 
 MIT License

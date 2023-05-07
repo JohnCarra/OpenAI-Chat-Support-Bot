@@ -10,7 +10,7 @@ The frontend is implemented using HTML, CSS, and JavaScript, and the backend is 
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/JohnCarra/OpenAIText`
+1. Clone the repository: `git clone https://github.com/JohnCarra/OpenAI-Chat-Support-Bot`
 2. Navigate to the project directory: `cd OpenAIText`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm start`

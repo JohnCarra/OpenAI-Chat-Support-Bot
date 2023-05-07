@@ -29,7 +29,7 @@ function addUserMessageToDialogueBox(message) {
     userMessage.addClass('bg-indigo-500 text-black rounded p-2 w-fit self-end break-words');
 
     // add the user's message to the element
-    userMessage.text(message);
+    userMessage.html('<span class="user-dot"></span>' + message); // Add a span with the .user-dot class
 
     // add the li element to the DOM
     $('#dialogue').append(userMessage);
@@ -73,6 +73,7 @@ function removeLoadingIndicatorFromDialogueBox() {
     // remove the loading indicator from the DOM
     loadingIndicator.remove();
 }
+
 // add the chatbot's response to the dialogue box
 function addBotMessageToDialogueBox(response) {
     // remove the loading indicator now that the response has been received
@@ -93,7 +94,7 @@ function addBotMessageToDialogueBox(response) {
         botMessage.addClass('bg-gray-500 text-black rounded p-2 w-fit self-start');
 
         // add the user's response to the element
-        botMessage.text(response.data.trim());
+        botMessage.html('<span class="chatbot-dot"></span>' + response.data.trim()); // Add a span with the .chatbot-dot class
     } else {
         // handle unexpected response format
         botMessage.addClass('bg-red-500 text-black rounded p-2 w-fit self-start');
@@ -106,7 +107,6 @@ function addBotMessageToDialogueBox(response) {
     // clear the input for the next response
     $('#prompt-input').val('');
 }
-
 
 // when the window loads, add an event listener to the form
 // that calls the handleSubmitMessage function when the form is submitted

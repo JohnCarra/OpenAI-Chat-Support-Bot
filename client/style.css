@@ -45,6 +45,10 @@ body {
   flex-direction: column;
   min-height: 100vh;
   padding: 16px;
+  
+  margin-top: -50px;
+
+
 }
 
 .main-text {
@@ -110,6 +114,15 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+#container h1, #container h2, #container h3 {
+  color: #000000;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  font-size: 2.2em;
+  font-weight: bold;
+  letter-spacing: 2px;
+  
 }
 
 /* Ocean wave background */
@@ -273,4 +286,19 @@ main {
   margin: 0;
 }
 
+.user-dot,
+.chatbot-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
 
+.user-dot {
+  background-color: #ff0000; /* Adjust the color to match the user message style */
+}
+
+.chatbot-dot {
+  background-color: #0066ff; /* Adjust the color to match the chatbot message style */
+}

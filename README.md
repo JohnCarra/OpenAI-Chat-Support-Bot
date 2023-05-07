@@ -15,6 +15,9 @@ The frontend is implemented using HTML, CSS, and JavaScript, and the backend is 
 3. Install dependencies: `npm install`
 4. Start the development server: `npm start`
 
+## UI
+![1](https://user-images.githubusercontent.com/82400181/236657600-597eb701-258f-4944-a42c-c101422078a0.png)
+
 ## Usage
 
 This project is for educational purposes and is simply showcasing the capability of the OpenAI API when implemented inside of a WebApp.

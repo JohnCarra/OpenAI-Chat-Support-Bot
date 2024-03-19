@@ -78,7 +78,7 @@
     "safe-buffer": "^5.2.1",
     "readdirp": "^3.6.0",
     "send": "^0.18.0",
-    "semver": "^5.7.1",
+    "semver": "^5.7.2",
     "has-symbols": "^1.0.3",
     "serve-static": "^1.15.0",
     "setprototypeof": "^1.2.0",
